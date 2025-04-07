@@ -1,1 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Manhattan Elite Tutoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
+        }
+        .resource-card {
+            transition: all 0.3s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .category-btn.active {
+            background-color: #1e40af;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold text-blue-900">Manhattan Elite</span>
+                    <span class="text-blue-500 font-light">Tutoring + Test Prep</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                <a href="services.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="team.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Our Team</a>
+                <a href="approach.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="resources.html" class="text-blue-800 border-b-2 border-blue-800 transition duration-300">Resources</a>
+                <a href="blog.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Blog</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleLoginModal()" class="hidden md:block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+                <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-3">
+                <a href="services.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="team.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Our Team</a>
+                <a href="approach.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="resources.html" class="block text-blue-800 font-medium transition duration-300">Resources</a>
+                <a href="blog.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Blog</a>
+                <a href="contact.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+                <button onclick="toggleLoginModal()" class="w-full bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+            </div>
+        </div>
+    </header>
 
+    <!-- Page Header -->
+    <section class="gradient-bg text-white py-16 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Educational Resources</h1>
+                <p class="text-xl text-blue-100">Curated materials to support your academic journey and test preparation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Categories Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="category-btn active bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterResources('all')">All Resources</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterResources('sat')">SAT Prep</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterResources('act')">ACT Prep</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterResources('study')">Study Skills</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterResources('college')">College Admissions</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterResources('academic')">Academic Subjects</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Resources -->
+    <section class="py-8 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-blue-900 mb-8 text-center">Featured Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Featured Resource 1 -->
+                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden" data-category="sat">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-800 flex items-center justify-center">
+                            <i class="fas fa-book text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-blue-900">Ultimate SAT Math Formula Guide</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SAT Prep</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">A comprehensive collection of every math formula you need to know for the SAT, with examples and practice problems.</p>
+                        <a href="#" class="inline-block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Download PDF</a>
+                    </div>
+                </div>
+
+                <!-- Featured Resource 2 -->
+                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden" data-category="study">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-green-800 flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-blue-900">Effective Study Techniques</h3>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Study Skills</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Learn scientifically-proven methods to improve retention, focus, and maximize your study sessions.</p>
+                        <a href="#" class="inline-block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">View Guide</a>
+                    </div>
+                </div>
+
+                <!-- Featured Resource 3 -->
+                <div class="resource-card bg-white rounded-lg shadow-md overflow-hidden" data-category="college">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-purple-800 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-blue-900">College Application Timeline</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">College Admissions</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">A month-by-month guide to the college application process, from junior year through senior year.</p>
+                        <a href="#" class="inline-block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Download Timeline</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Resources -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-blue-900 mb-8 text-center">Resource Library</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Resource 1 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="sat">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-file-pdf text-blue-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">SAT Reading Strategies</h3>
+                            <p class="text-sm text-gray-500">PDF Guide • 24 pages</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Techniques for improving reading comprehension and tackling difficult passages on the SAT.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Download PDF <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 2 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="act">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-file-pdf text-green-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">ACT Science Section Guide</h3>
+                            <p class="text-sm text-gray-500">PDF Guide • 18 pages</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">How to analyze scientific data, graphs, and research summaries on the ACT Science section.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Download PDF <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 3 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="study">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-video text-yellow-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">Time Management Workshop</h3>
+                            <p class="text-sm text-gray-500">Video • 45 minutes</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Learn practical strategies for managing your study time and balancing academics with other activities.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Watch Video <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 4 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="sat">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-cube text-red-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">SAT Math Problem Generator</h3>
+                            <p class="text-sm text-gray-500">Interactive Tool</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Practice with unlimited SAT-style math problems sorted by difficulty and topic area.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Try the Tool <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 5 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="college">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-file-alt text-purple-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">College Essay Examples</h3>
+                            <p class="text-sm text-gray-500">PDF Collection • 36 pages</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">A collection of successful college essays with commentary on what makes them effective.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Download PDF <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 6 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="academic">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-calculator text-blue-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">AP Calculus Review</h3>
+                            <p class="text-sm text-gray-500">Practice Problems • 15 pages</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Comprehensive review of key calculus concepts with practice problems and solutions.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Download PDF <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 7 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="study">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-clipboard-list text-green-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">Study Planner Template</h3>
+                            <p class="text-sm text-gray-500">Excel Template</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Customizable planner to organize your study schedule, track progress, and manage deadlines.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Download Template <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 8 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="act">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-pencil-alt text-yellow-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">ACT English Grammar Rules</h3>
+                            <p class="text-sm text-gray-500">PDF Guide • 20 pages</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Complete guide to the grammar and punctuation rules tested on the ACT English section.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Download PDF <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 9 -->
+                <div class="resource-card bg-white border border-gray-200 rounded-lg p-6" data-category="college">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-calendar-alt text-red-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900">College Visit Checklist</h3>
+                            <p class="text-sm text-gray-500">PDF Guide • 10 pages</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Questions to ask and things to look for when visiting college campuses to make an informed decision.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                        Download PDF <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition duration-300">
+                    Load More Resources
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Stay Updated with New Resources</h2>
+                <p class="text-gray-600 mb-8">Subscribe to our newsletter to receive new study materials, test prep resources, and college admissions tips.</p>
+                <form class="max-w-lg mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="px-4 py-3 flex-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition duration-300">
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-2xl font-bold">Manhattan Elite</span>
+                        <span class="text-blue-300 font-light">Tutoring</span>
+                    </div>
+                    <p class="text-blue-200 mb-6">Elevating academic excellence through personalized tutoring and mentorship.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-blue-200 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="team.html" class="text-blue-200 hover:text-white transition duration-300">Our Team</a></li>
+                        <li><a href="approach.html" class="text-blue-200 hover:text-white transition duration-300">Our Approach</a></li>
+                        <li><a href="resources.html" class="text-blue-200 hover:text-white transition duration-300">Resources</a></li>
+                        <li><a href="blog.html" class="text-blue-200 hover:text-white transition duration-300">Blog</a></li>
+                        <li><a href="contact.html" class="text-blue-200 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">SAT Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">ACT Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Study Skills</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">College Admissions</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Academic Subjects</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>123 Park Avenue, Suite 1500<br>New York, NY 10022</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3"></i>
+                            <span>(212) 555-1234</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>info@manhattanelite.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-12 pt-8 text-center text-blue-200">
+                <p>© 2025 Manhattan Elite Tutoring. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-black opacity-50 transition-opacity" onclick="toggleLoginModal()"></div>
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-auto z-50 overflow-hidden">
+                <div class="px-6 py-4 bg-blue-900 text-white flex justify-between items-center">
+                    <h3 class="text-lg font-medium">Client Portal Login</h3>
+                    <button onclick="toggleLoginModal()" class="text-white hover:text-blue-100">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <form id="login-form" onsubmit="handleLogin(event)">
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <p class="text-xs text-gray-500 mt-1">Forgot your password? <a href="#" class="text-blue-600 hover:underline">Reset it here</a></p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember-me" class="h-4 w-4 text-blue-600">
+                                <label for="remember-me" class="ml-2 text-sm text-gray-700">Remember me</label>
+                            </div>
+                            <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition duration-300">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle the login modal
+        function toggleLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.toggle('hidden');
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Filter resources by category
+        function filterResources(category) {
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-800', 'text-white');
+                btn.classList.add('bg-blue-100', 'text-blue-900');
+            });
+            
+            const clickedBtn = event.currentTarget;
+            clickedBtn.classList.remove('bg-blue-100', 'text-blue-900');
+            clickedBtn.classList.add('active', 'bg-blue-800', 'text-white');
+            
+            // Filter resources
+            const resources = document.querySelectorAll('.resource-card');
+            resources.forEach(resource => {
+                if (category === 'all' || resource.dataset.category === category) {
+                    resource.style.display = 'block';
+                } else {
+                    resource.style.display = 'none';
+                }
+            });
+        }
+        
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Demo login - in a real app you would validate with a server
+            if (email && email.includes('@') && password) {
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'dashboard.html';
+            }
+        }
+    </script>
+</body>
+</html>
