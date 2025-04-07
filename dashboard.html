@@ -71,15 +71,21 @@
             align-items: center;
             z-index: 9999;
         }
+        @media (max-width: 768px) {
+            header div {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800 bg-gray-100">
     <!-- Loading Indicator -->
     <div id="loading" class="loading">
-        <div class="text-center">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900"></div>
-            <p class="mt-2 text-blue-900">Loading dashboard data...</p>
-        </div>
+      <div class="text-center">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900"></div>
+        <p class="mt-2 text-blue-900">Loading dashboard data...</p>
+      </div>
     </div>
 
     <!-- Toast Notification -->
@@ -89,7 +95,7 @@
     </div>
 
     <!-- Admin Controls Modal -->
-    <div id="admin-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <!--<div id="admin-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 mx-4">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-bold text-blue-900">Admin Controls</h3>
@@ -154,7 +160,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Airtable Sync Button -->
     <button onclick="syncWithAirtable()" class="airtable-sync bg-blue-600 hover:bg-blue-700 text-white font-bold p-4 rounded-full shadow-lg">
@@ -162,36 +168,37 @@
     </button>
 
     <!-- Header -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl font-bold text-blue-900">Manhattan Elite</span>
-                <span class="text-blue-500 font-light">Tutoring</span>
-            </div>
-            <div class="flex items-center space-x-6">
-                <div class="hidden md:flex items-center space-x-2">
-                    <i class="fas fa-bell text-gray-600 text-xl relative">
-                        <span class="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">2</span>
-                    </i>
-                </div>
-                <div class="flex items-center space-x-3">
-                    <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                        <span class="text-blue-800 font-medium" id="student-initials">JS</span>
-                    </div>
-                    <div class="hidden md:block">
-                        <p class="font-medium text-gray-800" id="student-name">Jason Smith</p>
-                        <p class="text-xs text-gray-500" id="student-program">SAT Prep Student</p>
-                    </div>
-                </div>
-            </div>
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white shadow-lg">
+      <div class="flex justify-between items-center px-6 py-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl font-bold text-blue-900">Manhattan Elite</span>
+          <span class="text-blue-500 font-light">Tutoring</span>
         </div>
+        <div class="flex items-center space-x-6">
+          <div class="hidden md:flex items-center space-x-2">
+            <i class="fas fa-bell text-gray-600 text-xl relative">
+              <span class="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">2</span>
+            </i>
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+              <span class="text-blue-800 font-medium" id="student-initials">JS</span>
+            </div>
+            <div class="hidden md:block">
+              <p class="font-medium text-gray-800" id="student-name">Jason Smith</p>
+              <p class="text-xs text-gray-500" id="student-program">SAT Prep Student</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <!-- Main Content -->
-    <div class="flex">
+    <div class="flex pt-20">
         <!-- Sidebar -->
-        <aside class="w-20 md:w-64 h-screen sticky top-0 bg-white shadow-md">
-            <nav class="pt-6 px-2">
+        <aside class="w-20 md:w-64 fixed top-20 left-0 h-[calc(100vh-5rem)] bg-white shadow-md z-30">
+          <nav class="pt-6 px-2">
                 <div class="space-y-1">
                     <a href="#dashboard" class="flex items-center px-4 py-3 text-blue-900 sidebar-active rounded-lg">
                         <i class="fas fa-th-large md:mr-3 text-center w-6"></i>
@@ -225,10 +232,10 @@
                     </a>
                 </div>
                 <div class="border-t border-gray-200 mt-6 pt-6">
-                    <a href="#admin-section" onclick="toggleAdminModal()" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">
+                    <!-- <a href="#admin-section" onclick="toggleAdminModal()" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">
                         <i class="fas fa-database md:mr-3 text-center w-6"></i>
                         <span class="hidden md:inline-block">Airtable Config</span>
-                    </a>
+                    </a> -->
                     <a href="index.html" id="main-site-link" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">
                         <i class="fas fa-arrow-left md:mr-3 text-center w-6"></i>
                         <span class="hidden md:inline-block">Back to Main Site</span>
@@ -242,7 +249,7 @@
         </aside>
 
         <!-- Main Content Area -->
-        <main class="flex-1 p-6">
+        <main class="flex-1 ml-20 md:ml-64 p-6">
             <h1 class="text-2xl font-bold text-blue-900 mb-6">Student Dashboard</h1>
 
             <!-- Countdown and Student Info -->
@@ -251,9 +258,9 @@
                 <div class="bg-white rounded-lg shadow p-6">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-blue-900">SAT Countdown</h2>
-                        <button onclick="editSection('test-countdown')" class="text-blue-600 hover:text-blue-800">
+                        <!--<button onclick="editSection('test-countdown')" class="text-blue-600 hover:text-blue-800">
                             <i class="fas fa-pencil-alt"></i>
-                        </button>
+                        </button>-->
                     </div>
                     <div class="flex items-center justify-between">
                         <div>
@@ -272,7 +279,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4">
+                    <div class="border-t border-gray-100 pt-3 mt-4">
                         <a href="#test-prep" class="text-blue-600 text-sm font-medium hover:underline">View your test prep plan →</a>
                     </div>
                 </div>
@@ -281,9 +288,9 @@
                 <div class="bg-white rounded-lg shadow p-6">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-blue-900">Next Tutoring Session</h2>
-                        <button onclick="editSection('next-session')" class="text-blue-600 hover:text-blue-800">
+                        <!--<button onclick="editSection('next-session')" class="text-blue-600 hover:text-blue-800">
                             <i class="fas fa-pencil-alt"></i>
-                        </button>
+                        </button>-->
                     </div>
                     <div class="bg-blue-50 rounded-lg p-4 mb-4">
                         <div class="flex justify-between items-start">
@@ -313,9 +320,9 @@
                         <h2 class="text-lg font-bold text-blue-900">Your Progress</h2>
                         <div class="flex items-center">
                             <div class="text-sm text-gray-500 mr-2" id="last-updated">Last updated: Apr 3, 2025</div>
-                            <button onclick="editSection('progress')" class="text-blue-600 hover:text-blue-800">
+                            <!--<button onclick="editSection('progress')" class="text-blue-600 hover:text-blue-800">
                                 <i class="fas fa-pencil-alt"></i>
-                            </button>
+                            </button>-->
                         </div>
                     </div>
                     <div class="mb-4">
@@ -341,7 +348,7 @@
                             <div class="font-medium" id="target-score">1450+</div>
                         </div>
                     </div>
-                    <div class="mt-4 text-center">
+                    <div class="border-t border-gray-100 pt-3 mt-4 text-center">
                         <a href="#progress-details" class="text-blue-600 text-sm font-medium hover:underline">View detailed analytics →</a>
                     </div>
                 </div>
@@ -353,25 +360,14 @@
                 <div class="bg-white rounded-lg shadow overflow-hidden">
                     <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
                         <h2 class="text-lg font-bold text-blue-900">Current Assignments</h2>
-                        <button onclick="editSection('assignments')" class="text-blue-600 hover:text-blue-800">
+                        <!--<button onclick="editSection('assignments')" class="text-blue-600 hover:text-blue-800">
                             <i class="fas fa-pencil-alt"></i>
-                        </button>
+                        </button>-->
                     </div>
                     <div class="divide-y divide-gray-100" id="assignments-container">
                         <!-- Assignment items will be populated from Airtable -->
                         <div class="px-6 py-4">
                             <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-medium">Weekly Vocabulary List</h3>
-                                    <p class="text-sm text-gray-500 mt-1">Create flashcards and study list #9</p>
-                                </div>
-                                <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Due in 5 days</div>
-                            </div>
-                            <div class="mt-2 flex justify-between items-center">
-                                <div class="text-sm text-gray-600">Assigned by: Emma Watson, M.Ed.</div>
-                                <button class="text-blue-600 text-sm font-medium hover:underline">Submit Work</button>
-                            </div>
-                        </div>-between items-start">
                                 <div>
                                     <h3 class="font-medium">Reading Comprehension - Practice Set #8</h3>
                                     <p class="text-sm text-gray-500 mt-1">Complete passages 3-5 with timing</p>
@@ -397,4 +393,274 @@
                             </div>
                         </div>
                         <div class="px-6 py-4">
-                            <div class="flex justify
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-medium">Weekly Vocabulary List</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Create flashcards and study list #9</p>
+                                </div>
+                                <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Due in 5 days</div>
+                            </div>
+                            <div class="mt-2 flex justify-between items-center">
+                                <div class="text-sm text-gray-600">Assigned by: Emma Watson, M.Ed.</div>
+                                <button class="text-blue-600 text-sm font-medium hover:underline">Submit Work</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-100 pt-3 px-6 py-3 text-center">
+                        <a href="#all-assignments" class="text-blue-600 text-sm font-medium hover:underline">View all assignments →</a>
+                    </div>
+                </div>
+
+                <!-- Practice Test Results -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                        <h2 class="text-lg font-bold text-blue-900">Practice Test Results</h2>
+                        <!--<button onclick="editSection('test-results')" class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>-->
+                    </div>
+                    <div class="p-6">
+                        <canvas id="scoreChart" height="200"></canvas>
+                        <div class="grid grid-cols-3 gap-4 mt-4 text-center text-sm">
+                            <div>
+                                <div class="font-medium">Reading</div>
+                                <div class="text-blue-600" id="reading-progress">35 → 38</div>
+                                <div class="text-xs text-gray-500">out of 40</div>
+                            </div>
+                            <div>
+                                <div class="font-medium">Writing</div>
+                                <div class="text-blue-600" id="writing-progress">32 → 36</div>
+                                <div class="text-xs text-gray-500">out of 40</div>
+                            </div>
+                            <div>
+                                <div class="font-medium">Math</div>
+                                <div class="text-blue-600" id="math-progress">33 → 38</div>
+                                <div class="text-xs text-gray-500">out of 40</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-100 pt-3 px-6 py-3 text-center">
+                        <a href="#test-analysis" class="text-blue-600 text-sm font-medium hover:underline">View detailed analysis →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources and Study Plan -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Weekly Study Plan -->
+                <div class="lg:col-span-2 bg-white rounded-lg shadow overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                        <h2 class="text-lg font-bold text-blue-900">Weekly Study Plan</h2>
+                        <!--<button onclick="editSection('study-plan')" class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>-->
+                    </div>
+                    <div class="p-6">
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <h3 class="font-medium text-blue-900 mb-2" id="weekly-focus">This Week's Focus: Advanced Math & Critical Reading</h3>
+                            <p class="text-sm text-gray-600" id="focus-description">Following your last practice test, we're focusing on advanced algebra concepts and improving your critical reading speed.</p>
+                        </div>
+                        <div class="space-y-4" id="weekly-plan-container">
+                            <!-- Study plan items will be populated from Airtable -->
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-24 font-medium">Monday</div>
+                                <div>
+                                    <div class="font-medium">Math Section Review with David (60 min)</div>
+                                    <div class="text-sm text-gray-500">Complete homework assignment afterward</div>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-24 font-medium">Tuesday</div>
+                                <div>
+                                    <div class="font-medium">Independent Study (45 min)</div>
+                                    <div class="text-sm text-gray-500">Focus on vocabulary and reading practice</div>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-24 font-medium">Wednesday</div>
+                                <div>
+                                    <div class="font-medium">Reading & Writing with Emma (90 min)</div>
+                                    <div class="text-sm text-gray-500">Timed reading passages and review</div>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-24 font-medium">Thursday</div>
+                                <div>
+                                    <div class="font-medium">Independent Study (45 min)</div>
+                                    <div class="text-sm text-gray-500">Focus on algebra equations and word problems</div>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-24 font-medium">Friday</div>
+                                <div>
+                                    <div class="font-medium">Test Strategies with Emma (60 min)</div>
+                                    <div class="text-sm text-gray-500">Review techniques for eliminating wrong answers</div>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-24 font-medium">Weekend</div>
+                                <div>
+                                    <div class="font-medium">Practice Test #6</div>
+                                    <div class="text-sm text-gray-500">Full-length practice test under timed conditions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                        <h2 class="text-lg font-bold text-blue-900">Resources Library</h2>
+                        <!--<button onclick="editSection('resources')" class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>-->
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4" id="resources-container">
+                            <!-- Resource items will be populated from Airtable -->
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-video text-blue-800 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium">SAT Math: Quadratic Functions</h3>
+                                    <p class="text-sm text-gray-500">Video tutorial on advanced quadratic functions and applications</p>
+                                    <a href="#video-resource" class="text-blue-600 text-sm font-medium hover:underline mt-1 inline-block">
+                                        Watch video →
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-file-pdf text-blue-800 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium">Critical Reading Strategy Guide</h3>
+                                    <p class="text-sm text-gray-500">Techniques for improving reading speed and comprehension</p>
+                                    <a href="#pdf-resource" class="text-blue-600 text-sm font-medium hover:underline mt-1 inline-block">
+                                        View document →
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-pencil-alt text-blue-800 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium">Grammar Rules Practice Set</h3>
+                                    <p class="text-sm text-gray-500">Interactive exercises focused on common grammar errors</p>
+                                    <a href="#practice-resource" class="text-blue-600 text-sm font-medium hover:underline mt-1 inline-block">
+                                        Start practice →
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-newspaper text-blue-800 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium">Test Day Preparation Tips</h3>
+                                    <p class="text-sm text-gray-500">Expert advice on what to do the week before your exam</p>
+                                    <a href="#article-resource" class="text-blue-600 text-sm font-medium hover:underline mt-1 inline-block">
+                                        Read article →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-100 pt-3 px-6 py-3 text-center">
+                        <a href="#all-resources" class="text-blue-600 text-sm font-medium hover:underline">Browse all resources →</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="airtable-integration.js"></script>
+    <script>
+        // Additional initialization for the dashboard page
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        }
+        
+        // Check login status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!checkLoginStatus()) {
+                window.location.href = 'index.html';
+            }
+        });
+        
+        // Initialize chart if not handled by Airtable integration
+        if (typeof initializeChart !== 'function') {
+            function initializeChart() {
+                const ctx = document.getElementById('scoreChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Initial Test', 'Test 2', 'Test 3', 'Test 4', 'Latest Test'],
+                        datasets: [{
+                            label: 'Total Score',
+                            data: [1180, 1210, 1250, 1290, 1340],
+                            backgroundColor: 'rgba(30, 64, 175, 0.1)',
+                            borderColor: 'rgba(30, 64, 175, 1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                min: 1100,
+                                max: 1600
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Always hide loading indicator and initialize chart
+            window.addEventListener('load', function() {
+              // Initialize chart immediately
+              initializeChart();
+    
+                // Hide loading indicator
+                document.getElementById('loading').style.display = 'none';
+            });
+        }
+        
+        // Toggle admin modal if not defined in Airtable integration
+        if (typeof toggleAdminModal !== 'function') {
+            function toggleAdminModal() {
+                const modal = document.getElementById('admin-modal');
+                modal.classList.toggle('hidden');
+            }
+        }
+        
+        // Placeholder for section editing functionality
+        function editSection(sectionId) {
+            // This would be implemented to allow editing of each dashboard section
+            console.log('Edit section:', sectionId);
+            // For now, just show admin modal as demo
+            toggleAdminModal();
+        }
+        
+        // Function to check if user is logged in (if not defined in airtable-integration.js)
+        if (typeof checkLoginStatus !== 'function') {
+            function checkLoginStatus() {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                return isLoggedIn;
+            }
+        }
+    </script>
+</body>
+</html>
