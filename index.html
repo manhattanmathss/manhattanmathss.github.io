@@ -1,85 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manhattan Elite Tutoring</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    .gradient-bg {
-      background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
-    }
-    .blur-bg {
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.8);
-    }
-    .testimonial-card {
-      transition: all 0.3s ease;
-    }
-    .testimonial-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manhattan Elite Tutoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
+        }
+        .blur-bg {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-active {
+            overflow-y: visible !important;
+        }
+    </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-bold text-blue-900">Manhattan Elite</span>
+                <span class="text-blue-500 font-light">Tutoring + Test Prep</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                <a href="#services" class="text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="#tutors" class="text-gray-600 hover:text-blue-800 transition duration-300">Our Tutors</a>
+                <a href="#approach" class="text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-blue-800 transition duration-300">Testimonials</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleLoginModal()" class="hidden md:block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+                <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#services" class="block text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="#tutors" class="block text-gray-600 hover:text-blue-800 transition duration-300">Our Tutors</a>
+                <a href="#approach" class="block text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="#testimonials" class="block text-gray-600 hover:text-blue-800 transition duration-300">Testimonials</a>
+                <a href="#contact" class="block text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+                <button onclick="toggleLoginModal()" class="w-full bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+            </div>
+        </div>
+    </header>
 
-<!-- PAGE CONTENT START -->
-<!-- The full original content including hero, services, tutors, etc. has now been fully restored and placed here -->
-<!-- For brevity, it is not shown in this message, but the document in the canvas now includes the entire working page -->
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white relative">
+        <div class="absolute inset-0 opacity-10">
+        </div>
+        <div class="container mx-auto px-4 py-24 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Elevate Academic Excellence with Manhattan's Premier Tutoring</h1>
+                <p class="text-xl mb-8 text-blue-100">One-on-one personalized tutoring with Ivy League educators who are passionate about student success.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="bg-white text-blue-900 font-medium px-6 py-3 rounded-lg hover:bg-blue-50 transition duration-300 text-center">Schedule a Consultation</a>
+                    <a href="#services" class="bg-transparent border-2 border-white text-white font-medium px-6 py-3 rounded-lg hover:bg-white hover:text-blue-900 transition duration-300 text-center">Explore Our Services</a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full">
+                <path fill="#ffffff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,42.7C1120,32,1280,32,1360,32L1440,32L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
 
-<!-- PAGE CONTENT END -->
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Our Specialized Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Tailored educational support to help students excel academically and build confidence for their future.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-blue-50 rounded-xl p-8 text-center hover:shadow-lg transition duration-300">
+                    <div class="bg-blue-100 h-16 w-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-blue-800 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">SAT Preparation</h3>
+                    <p class="text-gray-600">Comprehensive strategies and personalized practice to maximize SAT scores and confidence.</p>
+                </div>
+                <div class="bg-blue-50 rounded-xl p-8 text-center hover:shadow-lg transition duration-300">
+                    <div class="bg-blue-100 h-16 w-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-blue-800 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">ACT Preparation</h3>
+                    <p class="text-gray-600">Targeted instruction focusing on each section of the ACT to achieve optimal results.</p>
+                </div>
+                <div class="bg-blue-50 rounded-xl p-8 text-center hover:shadow-lg transition duration-300">
+                    <div class="bg-blue-100 h-16 w-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-book text-blue-800 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Academic Support</h3>
+                    <p class="text-gray-600">Subject-specific tutoring across all major disciplines to strengthen understanding and grades.</p>
+                </div>
+                <div class="bg-blue-50 rounded-xl p-8 text-center hover:shadow-lg transition duration-300">
+                    <div class="bg-blue-100 h-16 w-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-tasks text-blue-800 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Executive Function</h3>
+                    <p class="text-gray-600">Building crucial organizational skills, time management, and study habits for long-term success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Scripts -->
-<script>
-  function toggleLoginModal() {
-    const modal = document.getElementById('login-modal');
-    if (modal) {
-      modal.classList.toggle('hidden');
-      const errorElement = document.getElementById('login-error');
-      if (errorElement) {
-        errorElement.classList.add('hidden');
-      }
-    }
-  }
+    <!-- Our Tutors Section -->
+    <section id="tutors" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Meet Our Ivy League Tutors</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our educators bring exceptional academic backgrounds and a genuine passion for mentoring students.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Emma Watson, M.Ed.</h3>
+                        <p class="text-blue-600 mb-3">Harvard University</p>
+                        <p class="text-gray-600 mb-4">Specializes in SAT verbal sections and English literature with 7+ years of tutoring experience.</p>
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">David Chen, Ph.D.</h3>
+                        <p class="text-blue-600 mb-3">Yale University</p>
+                        <p class="text-gray-600 mb-4">Expert in mathematics and physics with a focus on calculus, statistics, and standardized testing.</p>
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Sophia Rodriguez, M.S.</h3>
+                        <p class="text-blue-600 mb-3">Princeton University</p>
+                        <p class="text-gray-600 mb-4">Specializes in executive function coaching and organizational skills development for students.</p>
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-gray-600">4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-block bg-blue-900 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-800 transition duration-300">Meet Our Full Team</a>
+            </div>
+        </div>
+    </section>
 
-  function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
-      mobileMenu.classList.toggle('hidden');
-    }
-  }
+    <!-- Our Approach Section -->
+    <section id="approach" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="/api/placeholder/600/400" alt="Tutoring session" class="rounded-lg shadow-xl w-full" />
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-6">Our Personalized Approach</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-user-graduate text-blue-800"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Customized Learning Plans</h3>
+                                <p class="text-gray-600">We develop individualized strategies based on each student's learning style, strengths, and areas for growth.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-brain text-blue-800"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Holistic Development</h3>
+                                <p class="text-gray-600">We focus on building not just academic skills, but also confidence, critical thinking, and lifelong learning habits.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-bar text-blue-800"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Data-Driven Progress</h3>
+                                <p class="text-gray-600">Regular assessments help us track improvement and adjust strategies to ensure continuous advancement.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-comments text-blue-800"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Ongoing Communication</h3>
+                                <p class="text-gray-600">We maintain regular updates with parents and students, ensuring everyone stays informed about progress.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  function handleLogin(event) {
-    event.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    const errorElement = document.getElementById('login-error');
+    <!-- Results Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Our Proven Results</h2>
+                <p class="max-w-2xl mx-auto text-blue-100">Our students consistently achieve remarkable improvements in their academic performance.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 text-center">
+                    <div class="text-4xl font-bold text-white mb-2">230+</div>
+                    <p class="text-blue-100">Point Average SAT Improvement</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 text-center">
+                    <div class="text-4xl font-bold text-white mb-2">96%</div>
+                    <p class="text-blue-100">Of Students Improve by One Letter Grade</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 text-center">
+                    <div class="text-4xl font-bold text-white mb-2">92%</div>
+                    <p class="text-blue-100">Acceptance Rate to Top Universities</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 text-center">
+                    <div class="text-4xl font-bold text-white mb-2">4.9/5</div>
+                    <p class="text-blue-100">Parent and Student Satisfaction Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    if (email && email.includes('@') && password) {
-      localStorage.setItem('studentId', 'student_001');
-      localStorage.setItem('isLoggedIn', 'true');
-      window.location.href = 'dashboard.html';
-    } else {
-      errorElement.textContent = 'Invalid email or password. Please try again.';
-      errorElement.classList.remove('hidden');
-    }
-  }
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">What Our Clients Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from parents and students about their experiences with our tutoring services.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white rounded-lg p-8 shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-user text-blue-800 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="flex justify-center text-yellow-500 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900">Jennifer L.</h3>
+                        <p class="text-gray-500">Parent of SAT Student</p>
+                    </div>
+                    <p class="text-gray-600 text-center">"My daughter's SAT score improved by 270 points after just 3 months of tutoring. Her tutor not only taught her test strategies but also built her confidence. The investment was worth every penny."</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-8 shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-user text-blue-800 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="flex justify-center text-yellow-500 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900">Michael T.</h3>
+                        <p class="text-gray-500">High School Junior</p>
+                    </div>
+                    <p class="text-gray-600 text-center">"I was struggling with AP Calculus before working with my tutor from Manhattan Elite. Now I'm acing my tests and actually enjoy the subject. The study skills I learned help me in all my classes."</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-8 shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-user text-blue-800 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="flex justify-center text-yellow-500 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900">Sarah W.</h3>
+                        <p class="text-gray-500">Parent of Middle Schooler</p>
+                    </div>
+                    <p class="text-gray-600 text-center">"The executive function coaching transformed my son's academic life. He went from disorganized and overwhelmed to confident and in control. His grades improved and, more importantly, his stress levels decreased."</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    if (isLoggedIn) {
-      const headerNav = document.querySelector('header nav');
-      if (headerNav) {
-        const dashboardLink = document.createElement('a');
-        dashboardLink.href = 'dashboard.html';
-        dashboardLink.className = 'text-gray-600 hover:text-blue-800 transition duration-300';
-        dashboardLink.textContent = 'My Dashboard';
-        headerNav.appendChild(dashboardLink);
-      }
-    }
-  });
-</script>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-4">Get Started Today</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Schedule a free consultation to discuss your student's needs and discover how we can help.</p>
+                </div>
+                <div class="bg-blue-50 p-8 rounded-xl shadow-md">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="parent-name" class="block text-gray-700 mb-2">Parent Name</label>
+                            <input type="text" id="parent-name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="student-name" class="block text-gray-700 mb-2">Student Name</label>
+                            <input type="text" id="student-name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="service" class="block text-gray-700 mb-2">Service Interested In</label>
+                            <select id="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Select a Service</option>
+                                <option value="sat">SAT Preparation</option>
+                                <option value="act">ACT Preparation</option>
+                                <option value="academic">Academic Support</option>
+                                <option value="executive">Executive Function</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="message" class="block text-gray-700 mb-2">Tell Us About Your Student's Needs</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <div class="md:col-span-2 text-center">
+                            <button type="submit" class="bg-blue-900 text-white font-medium px-8 py-3 rounded-lg hover:bg-blue-800 transition duration-300">Schedule Free Consultation</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="flex justify-center mb-4">
+                            <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-blue-800 text-xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Our Location</h3>
+                        <p class="text-gray-600">123 Park Avenue, Suite 1500<br>New York, NY 10022</p>
+                    </div>
+                    <div>
+                        <div class="flex justify-center mb-4">
+                            <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-phone text-blue-800 text-xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Contact Us</h3>
+                        <p class="text-gray-600">(212) 555-1234<br>info@manhattanelite.edu</p>
+                    </div>
+                    <div>
+                        <div class="flex justify-center mb-4">
+                            <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-clock text-blue-800 text-xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Hours</h3>
+                        <p class="text-gray-600">Monday-Friday: 9am-8pm<br>Saturday: 10am-5pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-2xl font-bold">Manhattan Elite</span>
+                        <span class="text-blue-300 font-light">Tutoring</span>
+                    </div>
+                    <p class="text-blue-200 mb-6">Elevating academic excellence through personalized tutoring and mentorship.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">SAT Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">ACT Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Academic Support</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Executive Function</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">College Admissions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Student Blog</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Parent Resources</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Test Prep Resources</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">College Planning</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>123 Park Avenue, Suite 1500<br>New York, NY 10022</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3"></i>
+                            <span>(212) 555-1234</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>info@manhattanelite.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-12 pt-8 text-center text-blue-200">
+                <p>© 2025 Manhattan Elite Tutoring. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-black opacity-50 transition-opacity" onclick="toggleLoginModal()"></div>
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-auto z-50 overflow-hidden">
+                <div class="px-6 py-4 bg-blue-900 text-white flex justify-between items-center">
+                    <h3 class="text-lg font-medium">Client Portal Login</h3>
+                    <button onclick="toggleLoginModal()" class="text-white hover:text-blue-100">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <form id="login-form" onsubmit="handleLogin(event)">
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <p class="text-xs text-gray-500 mt-1">Forgot your password? <a href="#" class="text-blue-600 hover:underline">Reset it here</a></p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember-me" class="h-4 w-4 text-blue-600">
+                                <label for="remember-me" class="ml-2 text-sm text-gray-700">Remember me</label>
+                            </div>
+                            <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition duration-300">
+                                Login
+                            </button>
+                        </div>
+                        <div id="login-error" class="mt-4 text-red-600 text-sm hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle the login modal
+        function toggleLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.toggle('hidden');
+            
+            // Reset error message
+            const errorElement = document.getElementById('login-error');
+            if (errorElement) {
+                errorElement.classList.add('hidden');
+            }
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Handle login form submission
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errorElement = document.getElementById('login-error');
+            
+            // In a real application, you would validate credentials against a server
+            // For demo purposes, accept any login with email format
+            if (email && email.includes('@') && password) {
+                // Store demo student ID
+                localStorage.setItem('studentId', 'student_001');
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                // Show error
+                errorElement.textContent = 'Invalid email or password. Please try again.';
+                errorElement.classList.remove('hidden');
+            }
+        }
+        
+        // Check if user is already logged in on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            // If logged in, show a dashboard link in the header
+            if (isLoggedIn) {
+                const headerNav = document.querySelector('header nav');
+                if (headerNav) {
+                    const dashboardLink = document.createElement('a');
+                    dashboardLink.href = 'dashboard.html';
+                    dashboardLink.className = 'text-gray-600 hover:text-blue-800 transition duration-300';
+                    dashboardLink.textContent = 'My Dashboard';
+                    headerNav.appendChild(dashboardLink);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
