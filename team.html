@@ -1,1 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Manhattan Elite Tutoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
+        }
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .team-overlay {
+            opacity: 0;
+            background: linear-gradient(to top, rgba(14, 41, 91, 0.9) 0%, rgba(30, 58, 138, 0.4) 100%);
+            transition: all 0.4s ease;
+        }
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+        .filter-btn.active {
+            background-color: #1e40af;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold text-blue-900">Manhattan Elite</span>
+                    <span class="text-blue-500 font-light">Tutoring + Test Prep</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                <a href="services.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="team.html" class="text-blue-800 border-b-2 border-blue-800 transition duration-300">Our Team</a>
+                <a href="approach.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="resources.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Resources</a>
+                <a href="blog.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Blog</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleLoginModal()" class="hidden md:block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+                <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-3">
+                <a href="services.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="team.html" class="block text-blue-800 font-medium transition duration-300">Our Team</a>
+                <a href="approach.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="resources.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Resources</a>
+                <a href="blog.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Blog</a>
+                <a href="contact.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+                <button onclick="toggleLoginModal()" class="w-full bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+            </div>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-full h-full opacity-10">
+            <div class="absolute top-20 right-20 w-64 h-64 rounded-full bg-blue-500 filter blur-3xl"></div>
+            <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-blue-300 filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Meet Our Team of Experts</h1>
+                <p class="text-xl text-blue-100 mb-10">Our tutors and educators bring exceptional academic backgrounds and a genuine passion for mentoring students.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#leadership" class="bg-white text-blue-900 font-medium px-6 py-3 rounded-lg hover:bg-blue-50 transition duration-300">Leadership Team</a>
+                    <a href="#tutors" class="bg-transparent border-2 border-white text-white font-medium px-6 py-3 rounded-lg hover:bg-white hover:text-blue-900 transition duration-300">Meet Our Tutors</a>
+                    <a href="contact.html" class="bg-blue-800 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Work With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section id="leadership" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Our Leadership Team</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Meet the educational visionaries who lead Manhattan Elite Tutoring.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Leadership Card 1 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative h-80">
+                        <img src="/api/placeholder/400/400" alt="Leadership Team Member" class="w-full h-full object-cover object-center" />
+                        <div class="team-overlay absolute inset-0 flex items-center justify-center">
+                            <div class="p-4 text-center">
+                                <div class="flex justify-center space-x-4 mb-4">
+                                    <a href="#" class="text-white hover:text-blue-200 transition">
+                                        <i class="fab fa-linkedin-in text-lg"></i>
+                                    </a>
+                                    <a href="#" class="text-white hover:text-blue-200 transition">
+                                        <i class="fas fa-envelope text-lg"></i>
+                                    </a>
+                                </div>
+                                <p class="text-white text-sm">Dr. Thornton holds a Ph.D. in Education from Columbia University and has over 20 years of experience in educational leadership and curriculum development.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Dr. Jonathan Thornton</h3>
+                        <p class="text-blue-600 mb-3">Founder & CEO</p>
+                        <p class="text-gray-600">Former Dean of Admissions at an Ivy League university with a passion for educational excellence.</p>
+                    </div>
+                </div>
+
+                <!-- Leadership Card 2 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative h-80">
+                        <img src="/api/placeholder/400/400" alt="Leadership Team Member" class="w-full h-full object-cover object-center" />
+                        <div class="team-overlay absolute inset-0 flex items-center justify-center">
+                            <div class="p-4 text-center">
+                                <div class="flex justify-center space-x-4 mb-4">
+                                    <a href="#" class="text-white hover:text-blue-200 transition">
+                                        <i class="fab fa-linkedin-in text-lg"></i>
+                                    </a>
+                                    <a href="#" class="text-white hover:text-blue-200 transition">
+                                        <i class="fas fa-envelope text-lg"></i>
+                                    </a>
+                                </div>
+                                <p class="text-white text-sm">Ms. Parker earned her M.Ed. from Harvard University and has been recognized nationally for her innovative approaches to personalized learning.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Elizabeth Parker, M.Ed.</h3>
+                        <p class="text-blue-600 mb-3">Director of Academic Programs</p>
+                        <p class="text-gray-600">Specialized in creating personalized learning plans and curriculum development.</p>
+                    </div>
+                </div>
+
+                <!-- Leadership Card 3 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative h-80">
+                        <img src="/api/placeholder/400/400" alt="Leadership Team Member" class="w-full h-full object-cover object-center" />
+                        <div class="team-overlay absolute inset-0 flex items-center justify-center">
+                            <div class="p-4 text-center">
+                                <div class="flex justify-center space-x-4 mb-4">
+                                    <a href="#" class="text-white hover:text-blue-200 transition">
+                                        <i class="fab fa-linkedin-in text-lg"></i>
+                                    </a>
+                                    <a href="#" class="text-white hover:text-blue-200 transition">
+                                        <i class="fas fa-envelope text-lg"></i>
+                                    </a>
+                                </div>
+                                <p class="text-white text-sm">Dr. Williams earned his Ph.D. in Mathematics from MIT and has 15+ years of experience in test preparation and curriculum design.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Dr. Michael Williams</h3>
+                        <p class="text-blue-600 mb-3">Director of Test Preparation</p>
+                        <p class="text-gray-600">Expert in standardized test preparation with proven strategies for score improvement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl font-bold text-blue-900 mb-6">Our Values and Standards</h2>
+                        <p class="text-gray-600 mb-8">At Manhattan Elite Tutoring, we set extremely high standards for our educators. We believe that the quality of our team directly impacts the success of our students.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-graduation-cap text-blue-800"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-blue-900 mb-2">Academic Excellence</h3>
+                                    <p class="text-gray-600">All our tutors hold degrees from top-tier universities and have demonstrated mastery in their subject areas.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-chalkboard-teacher text-blue-800"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-blue-900 mb-2">Teaching Experience</h3>
+                                    <p class="text-gray-600">We select educators with proven teaching experience who can effectively communicate complex concepts.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-heart text-blue-800"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-blue-900 mb-2">Passion for Mentorship</h3>
+                                    <p class="text-gray-600">Our team is genuinely passionate about mentoring students and helping them achieve their full potential.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-sync-alt text-blue-800"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-blue-900 mb-2">Continuous Growth</h3>
+                                    <p class="text-gray-600">We invest in ongoing professional development to ensure our team stays current with best practices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2">
+                        <div class="bg-white rounded-xl shadow-xl p-8">
+                            <div class="flex justify-center mb-6">
+                                <div class="h-20 w-20 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-users text-blue-800 text-3xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-4 text-center">Our Hiring Process</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="h-8 w-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-3">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="flex-1 bg-blue-50 p-3 rounded-lg">
+                                        <p class="font-medium">Rigorous Academic Screening</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="h-8 w-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-3">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="flex-1 bg-blue-50 p-3 rounded-lg">
+                                        <p class="font-medium">In-Depth Subject Matter Interviews</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="h-8 w-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-3">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="flex-1 bg-blue-50 p-3 rounded-lg">
+                                        <p class="font-medium">Teaching Demonstration</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="h-8 w-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-3">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="flex-1 bg-blue-50 p-3 rounded-lg">
+                                        <p class="font-medium">Background & Reference Checks</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="h-8 w-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-3">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="flex-1 bg-blue-50 p-3 rounded-lg">
+                                        <p class="font-medium">Ongoing Performance Evaluation</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 text-center">
+                                <p class="text-gray-600 italic">Only 7% of applicants are selected to join our team</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Tutors -->
+    <section id="tutors" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Meet Our Expert Tutors</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Our diverse team of educators brings expertise across all subject areas and test preparation.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterTutors('all')">All Tutors</button>
+                <button class="filter-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterTutors('math')">Mathematics</button>
+                <button class="filter-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterTutors('science')">Sciences</button>
+                <button class="filter-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterTutors('english')">English & Writing</button>
+                <button class="filter-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterTutors('test-prep')">Test Prep</button>
+            </div>
+
+            <!-- Tutors Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                <!-- Tutor Card 1 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="math test-prep">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                        <div class="absolute top-0 right-0 bg-blue-800 text-white text-xs font-bold px-3 py-1 m-3 rounded-full">
+                            Top Rated
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">David Chen, Ph.D.</h3>
+                        <p class="text-blue-600 mb-2">Yale University</p>
+                        <p class="text-gray-600 mb-3">Mathematics & Physics Expert</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SAT Math</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Calculus</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Physics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutor Card 2 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="english test-prep">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Emma Watson, M.Ed.</h3>
+                        <p class="text-blue-600 mb-2">Harvard University</p>
+                        <p class="text-gray-600 mb-3">English & Literature Specialist</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SAT Reading</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Writing</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Literature</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutor Card 3 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="science test-prep">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">James Rodriguez, Ph.D.</h3>
+                        <p class="text-blue-600 mb-2">Stanford University</p>
+                        <p class="text-gray-600 mb-3">Chemistry & Biology Expert</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-gray-600">4.8</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">AP Biology</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Chemistry</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">MCAT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutor Card 4 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="math science">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                        <div class="absolute top-0 right-0 bg-blue-800 text-white text-xs font-bold px-3 py-1 m-3 rounded-full">
+                            Top Rated
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Sophia Patel, M.S.</h3>
+                        <p class="text-blue-600 mb-2">MIT</p>
+                        <p class="text-gray-600 mb-3">Computer Science & Engineering</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-2 text-gray-600">5.0</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Computer Science</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Statistics</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutor Card 5 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="english test-prep">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Marcus Johnson, M.A.</h3>
+                        <p class="text-blue-600 mb-2">Columbia University</p>
+                        <p class="text-gray-600 mb-3">History & Test Prep Specialist</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-gray-600">4.9</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">ACT English</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">History</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Writing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutor Card 6 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="science test-prep">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Lauren Thompson, Ph.D.</h3>
+                        <p class="text-blue-600 mb-2">Princeton University</p>
+                        <p class="text-gray-600 mb-3">Physics & Math Expert</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-2 text-gray-600">4.9</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">AP Physics</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SAT Subject Tests</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Advanced Math</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutor Card 7 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="math english">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Robert Kim, M.S.</h3>
+                        <p class="text-blue-600 mb-2">UC Berkeley</p>
+                        <p class="text-gray-600 mb-3">Economics & Statistics Specialist</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-gray-600">4.7</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Economics</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Statistics</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Business</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutor Card 8 -->
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md" data-category="english test-prep">
+                    <div class="relative">
+                        <img src="/api/placeholder/400/300" alt="Tutor" class="w-full h-64 object-cover object-center" />
+                        <div class="absolute top-0 right-0 bg-blue-800 text-white text-xs font-bold px-3 py-1 m-3 rounded-full">
+                            Top Rated
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Sophia Rodriguez, M.S.</h3>
+                        <p class="text-blue-600 mb-2">Princeton University</p>
+                        <p class="text-gray-600 mb-3">College Admissions Specialist</p>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-gray-600">4.9</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">College Essays</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Admissions</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Executive Function</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition duration-300">
+                    View More Tutors
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Our Team -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Join Our Elite Team of Educators</h2>
+                <p class="text-xl text-blue-100 mb-8">Are you passionate about education and helping students achieve their goals? We're always looking for exceptional tutors to join our team.</p>
+                <a href="contact.html" class="inline-block bg-white text-blue-900 font-medium px-8 py-4 rounded-lg hover:bg-blue-50 transition duration-300">Apply to Become a Tutor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-2xl font-bold">Manhattan Elite</span>
+                        <span class="text-blue-300 font-light">Tutoring</span>
+                    </div>
+                    <p class="text-blue-200 mb-6">Elevating academic excellence through personalized tutoring and mentorship.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-blue-200 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="team.html" class="text-blue-200 hover:text-white transition duration-300">Our Team</a></li>
+                        <li><a href="approach.html" class="text-blue-200 hover:text-white transition duration-300">Our Approach</a></li>
+                        <li><a href="resources.html" class="text-blue-200 hover:text-white transition duration-300">Resources</a></li>
+                        <li><a href="blog.html" class="text-blue-200 hover:text-white transition duration-300">Blog</a></li>
+                        <li><a href="contact.html" class="text-blue-200 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">SAT Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">ACT Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Academic Support</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">College Admissions</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Executive Function</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>123 Park Avenue, Suite 1500<br>New York, NY 10022</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3"></i>
+                            <span>(212) 555-1234</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>info@manhattanelite.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-12 pt-8 text-center text-blue-200">
+                <p>© 2025 Manhattan Elite Tutoring. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-black opacity-50 transition-opacity" onclick="toggleLoginModal()"></div>
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-auto z-50 overflow-hidden">
+                <div class="px-6 py-4 bg-blue-900 text-white flex justify-between items-center">
+                    <h3 class="text-lg font-medium">Client Portal Login</h3>
+                    <button onclick="toggleLoginModal()" class="text-white hover:text-blue-100">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <form id="login-form" onsubmit="handleLogin(event)">
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <p class="text-xs text-gray-500 mt-1">Forgot your password? <a href="#" class="text-blue-600 hover:underline">Reset it here</a></p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember-me" class="h-4 w-4 text-blue-600">
+                                <label for="remember-me" class="ml-2 text-sm text-gray-700">Remember me</label>
+                            </div>
+                            <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition duration-300">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle the login modal
+        function toggleLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.toggle('hidden');
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Filter tutors by category
+        function filterTutors(category) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-800', 'text-white');
+                btn.classList.add('bg-blue-100', 'text-blue-900');
+            });
+            
+            const clickedBtn = event.currentTarget;
+            clickedBtn.classList.remove('bg-blue-100', 'text-blue-900');
+            clickedBtn.classList.add('active', 'bg-blue-800', 'text-white');
+            
+            // Filter tutors
+            const tutors = document.querySelectorAll('.team-card[data-category]');
+            tutors.forEach(tutor => {
+                if (category === 'all' || tutor.dataset.category.includes(category)) {
+                    tutor.style.display = 'block';
+                } else {
+                    tutor.style.display = 'none';
+                }
+            });
+        }
+        
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Demo login - in a real app you would validate with a server
+            if (email && email.includes('@') && password) {
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'dashboard.html';
+            }
+        }
+    </script>
+</body>
+</html>
