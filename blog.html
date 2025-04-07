@@ -1,1 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Manhattan Elite Tutoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
+        }
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .category-btn.active {
+            background-color: #1e40af;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold text-blue-900">Manhattan Elite</span>
+                    <span class="text-blue-500 font-light">Tutoring + Test Prep</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                <a href="services.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="team.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Our Team</a>
+                <a href="approach.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="resources.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Resources</a>
+                <a href="blog.html" class="text-blue-800 border-b-2 border-blue-800 transition duration-300">Blog</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleLoginModal()" class="hidden md:block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+                <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-3">
+                <a href="services.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Services</a>
+                <a href="team.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Our Team</a>
+                <a href="approach.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Our Approach</a>
+                <a href="resources.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Resources</a>
+                <a href="blog.html" class="block text-blue-800 font-medium transition duration-300">Blog</a>
+                <a href="contact.html" class="block text-gray-600 hover:text-blue-800 transition duration-300">Contact</a>
+                <button onclick="toggleLoginModal()" class="w-full bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Client Portal</button>
+            </div>
+        </div>
+    </header>
 
+    <!-- Page Header -->
+    <section class="gradient-bg text-white py-16 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Blog</h1>
+                <p class="text-xl text-blue-100">Expert insights on test preparation, academic excellence, and college admissions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="category-btn active bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterPosts('all')">All Posts</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterPosts('test-prep')">Test Prep</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterPosts('study-tips')">Study Tips</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterPosts('college')">College Admissions</button>
+                    <button class="category-btn bg-blue-100 text-blue-900 px-5 py-2 rounded-full font-medium hover:bg-blue-800 hover:text-white transition duration-300" onclick="filterPosts('parents')">For Parents</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="py-8 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-blue-900 mb-8 text-center">Featured Article</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden" data-category="college">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="/api/placeholder/800/500" alt="Featured blog post" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="text-sm text-gray-500">April 1, 2025</div>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">College Admissions</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-4">How to Create a Compelling College Application in 2025</h3>
+                            <p class="text-gray-600 mb-6">The college admissions landscape has changed dramatically in recent years. In this comprehensive guide, we explore the latest strategies for building a standout application that showcases your unique strengths and perspectives.</p>
+                            <div class="flex items-center mb-6">
+                                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                    <span class="text-blue-800 font-medium">SR</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Sophie Rodriguez, M.S.</p>
+                                    <p class="text-sm text-gray-500">College Admissions Specialist</p>
+                                </div>
+                            </div>
+                            <a href="blog-post.html" class="inline-block bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">Read Full Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-blue-900 mb-8 text-center">Recent Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Blog Post 1 -->
+                <div class="blog-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm" data-category="test-prep">
+                    <img src="/api/placeholder/600/400" alt="Blog post" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="text-sm text-gray-500">March 25, 2025</div>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Test Prep</span>
+                        </div>
+                        <h3 class="font-bold text-blue-900 text-xl mb-3">5 Essential SAT Math Concepts You Must Master</h3>
+                        <p class="text-gray-600 mb-4">Focus your SAT math preparation on these key concepts that appear most frequently and carry the most points on the exam.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <span class="text-blue-800 font-medium text-xs">DC</span>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">David Chen, Ph.D.</p>
+                                <p class="text-xs text-gray-500">Math Specialist</p>
+                            </div>
+                        </div>
+                        <a href="blog-post.html" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm" data-category="study-tips">
+                    <img src="/api/placeholder/600/400" alt="Blog post" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="text-sm text-gray-500">March 18, 2025</div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Study Tips</span>
+                        </div>
+                        <h3 class="font-bold text-blue-900 text-xl mb-3">The Science of Memory: How to Remember What You Study</h3>
+                        <p class="text-gray-600 mb-4">Discover research-backed techniques that can dramatically improve your ability to retain and recall information for exams.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <span class="text-blue-800 font-medium text-xs">EW</span>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">Emma Watson, M.Ed.</p>
+                                <p class="text-xs text-gray-500">Learning Specialist</p>
+                            </div>
+                        </div>
+                        <a href="blog-post.html" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="blog-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm" data-category="parents">
+                    <img src="/api/placeholder/600/400" alt="Blog post" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="text-sm text-gray-500">March 12, 2025</div>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">For Parents</span>
+                        </div>
+                        <h3 class="font-bold text-blue-900 text-xl mb-3">How to Support Your Teen During College Applications</h3>
+                        <p class="text-gray-600 mb-4">Learn the delicate balance between providing guidance and allowing your teen to take ownership of their college application process.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <span class="text-blue-800 font-medium text-xs">SR</span>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">Sophia Rodriguez, M.S.</p>
+                                <p class="text-xs text-gray-500">College Admissions Specialist</p>
+                            </div>
+                        </div>
+                        <a href="blog-post.html" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 4 -->
+                <div class="blog-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm" data-category="test-prep">
+                    <img src="/api/placeholder/600/400" alt="Blog post" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="text-sm text-gray-500">March 5, 2025</div>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Test Prep</span>
+                        </div>
+                        <h3 class="font-bold text-blue-900 text-xl mb-3">ACT vs. SAT: Which Test Is Right for You?</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive comparison of both tests to help you decide which one plays better to your academic strengths and testing style.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <span class="text-blue-800 font-medium text-xs">EW</span>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">Emma Watson, M.Ed.</p>
+                                <p class="text-xs text-gray-500">Test Prep Coordinator</p>
+                            </div>
+                        </div>
+                        <a href="blog-post.html" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 5 -->
+                <div class="blog-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm" data-category="college">
+                    <img src="/api/placeholder/600/400" alt="Blog post" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="text-sm text-gray-500">February 28, 2025</div>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">College Admissions</span>
+                        </div>
+                        <h3 class="font-bold text-blue-900 text-xl mb-3">The Changing Landscape of College Financial Aid</h3>
+                        <p class="text-gray-600 mb-4">Recent policy changes have significantly altered how financial aid works. Here's what families need to know to maximize their opportunities.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <span class="text-blue-800 font-medium text-xs">SR</span>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">Sophia Rodriguez, M.S.</p>
+                                <p class="text-xs text-gray-500">College Admissions Specialist</p>
+                            </div>
+                        </div>
+                        <a href="blog-post.html" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 6 -->
+                <div class="blog-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm" data-category="study-tips">
+                    <img src="/api/placeholder/600/400" alt="Blog post" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="text-sm text-gray-500">February 20, 2025</div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Study Tips</span>
+                        </div>
+                        <h3 class="font-bold text-blue-900 text-xl mb-3">Digital vs. Paper: The Best Way to Take Notes</h3>
+                        <p class="text-gray-600 mb-4">We examine the research on different note-taking methods and provide guidance on choosing the approach that will work best for you.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <span class="text-blue-800 font-medium text-xs">DC</span>
+                            </div>
+                            <div>
+                                <p class="font-medium text-sm">David Chen, Ph.D.</p>
+                                <p class="text-xs text-gray-500">Academic Coordinator</p>
+                            </div>
+                        </div>
+                        <a href="blog-post.html" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition duration-300">
+                    View More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Subscribe Section -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Subscribe to Our Blog</h2>
+                <p class="text-gray-600 mb-8">Get the latest articles, study tips, and educational insights delivered straight to your inbox.</p>
+                <form class="max-w-lg mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="px-4 py-3 flex-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition duration-300">
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-2xl font-bold">Manhattan Elite</span>
+                        <span class="text-blue-300 font-light">Tutoring</span>
+                    </div>
+                    <p class="text-blue-200 mb-6">Elevating academic excellence through personalized tutoring and mentorship.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-blue-200 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="team.html" class="text-blue-200 hover:text-white transition duration-300">Our Team</a></li>
+                        <li><a href="approach.html" class="text-blue-200 hover:text-white transition duration-300">Our Approach</a></li>
+                        <li><a href="resources.html" class="text-blue-200 hover:text-white transition duration-300">Resources</a></li>
+                        <li><a href="blog.html" class="text-blue-200 hover:text-white transition duration-300">Blog</a></li>
+                        <li><a href="contact.html" class="text-blue-200 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Blog Categories</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Test Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Study Tips</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">College Admissions</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">For Parents</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Academic Success</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>123 Park Avenue, Suite 1500<br>New York, NY 10022</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3"></i>
+                            <span>(212) 555-1234</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>info@manhattanelite.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-12 pt-8 text-center text-blue-200">
+                <p>© 2025 Manhattan Elite Tutoring. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-black opacity-50 transition-opacity" onclick="toggleLoginModal()"></div>
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-auto z-50 overflow-hidden">
+                <div class="px-6 py-4 bg-blue-900 text-white flex justify-between items-center">
+                    <h3 class="text-lg font-medium">Client Portal Login</h3>
+                    <button onclick="toggleLoginModal()" class="text-white hover:text-blue-100">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <form id="login-form" onsubmit="handleLogin(event)">
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <p class="text-xs text-gray-500 mt-1">Forgot your password? <a href="#" class="text-blue-600 hover:underline">Reset it here</a></p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember-me" class="h-4 w-4 text-blue-600">
+                                <label for="remember-me" class="ml-2 text-sm text-gray-700">Remember me</label>
+                            </div>
+                            <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition duration-300">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle the login modal
+        function toggleLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.toggle('hidden');
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Filter blog posts by category
+        function filterPosts(category) {
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-800', 'text-white');
+                btn.classList.add('bg-blue-100', 'text-blue-900');
+            });
+            
+            const clickedBtn = event.currentTarget;
+            clickedBtn.classList.remove('bg-blue-100', 'text-blue-900');
+            clickedBtn.classList.add('active', 'bg-blue-800', 'text-white');
+            
+            // Filter posts
+            const posts = document.querySelectorAll('.blog-card');
+            posts.forEach(post => {
+                if (category === 'all' || post.dataset.category === category) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+        
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Demo login - in a real app you would validate with a server
+            if (email && email.includes('@') && password) {
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'dashboard.html';
+            }
+        }
+    </script>
+</body>
+</html> 
