@@ -270,7 +270,7 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">Hear from parents and students about their experiences with our tutoring services.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="testimonial-card bg-white rounded-lg p-8 shadow-md">
+                  <div class="testimonial-card bg-white rounded-lg p-8 shadow-md">
                     <div class="flex justify-center mb-6">
                         <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
                             <i class="fas fa-user text-blue-800 text-xl"></i>
@@ -288,6 +288,44 @@
                         <p class="text-gray-500">Parent of SAT Student</p>
                     </div>
                     <p class="text-gray-600 text-center">"My daughter's SAT score improved by 270 points after just 3 months of tutoring. Her tutor not only taught her test strategies but also built her confidence. The investment was worth every penny."</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-8 shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-user text-blue-800 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="flex justify-center text-yellow-500 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900">Michael T.</h3>
+                        <p class="text-gray-500">High School Junior</p>
+                    </div>
+                    <p class="text-gray-600 text-center">"I was struggling with AP Calculus before working with my tutor from Manhattan Elite. Now I'm acing my tests and actually enjoy the subject. The study skills I learned help me in all my classes."</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-8 shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-user text-blue-800 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="flex justify-center text-yellow-500 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900">Sarah W.</h3>
+                        <p class="text-gray-500">Parent of Middle Schooler</p>
+                    </div>
+                    <p class="text-gray-600 text-center">"The executive function coaching transformed my son's academic life. He went from disorganized and overwhelmed to confident and in control. His grades improved and, more importantly, his stress levels decreased."</p>
                 </div>
                 <!-- Other testimonials -->
                 <!-- ... -->
@@ -446,12 +484,10 @@
             const password = document.getElementById('login-password').value;
             const errorElement = document.getElementById('login-error');
             
-            // In a real application, you would validate credentials against a server
-            // For demo purposes, accept any login with email format
             if (email && email.includes('@') && password) {
-                // Store demo student ID
-                localStorage.setItem('studentId', 'student_001');
+                // Explicitly set isLoggedIn to 'true' as a string
                 localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('studentId', 'student_001');
                 
                 // Redirect to dashboard
                 window.location.href = 'dashboard.html';
